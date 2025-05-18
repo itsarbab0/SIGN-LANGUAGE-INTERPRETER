@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning - Sign Language Interpreter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .letter-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .letter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .letter-header {
+            background-color: #2563eb;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .letter-image {
+            height: 200px;
+            object-fit: contain;
+            padding: 1rem;
+            background-color: #f9fafb;
+        }
+        
+        .letter-description {
+            padding: 1.5rem;
+        }
+        
+        .learning-nav {
+            position: sticky;
+            top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .learning-nav-link {
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.2s ease;
+        }
+        
+        .learning-nav-link:hover,
+        .learning-nav-link.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        
+        .learning-tips {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background-color: #f0f9ff;
+            border-left: 5px solid #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-sign-language me-2"></i>
+                Sign Language Interpreter
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/learning"><i class="fas fa-book-open me-1"></i> Learning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/practice"><i class="fas fa-hands me-1"></i> Practice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/upload"><i class="fas fa-upload me-1"></i> Upload</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="learning-nav">
+                    <h5 class="mb-3">Letters</h5>
+                    <nav id="letter-nav" class="nav flex-column">
+                        <a class="learning-nav-link active" href="#letter-A">Letter A</a>
+                        <a class="learning-nav-link" href="#letter-B">Letter B</a>
+                        <a class="learning-nav-link" href="#letter-C">Letter C</a>
+                        <a class="learning-nav-link" href="#letter-D">Letter D</a>
+                        <a class="learning-nav-link" href="#letter-E">Letter E</a>
+                        <a class="learning-nav-link" href="#letter-F">Letter F</a>
+                        <a class="learning-nav-link" href="#letter-G">Letter G</a>
+                        <a class="learning-nav-link" href="#letter-H">Letter H</a>
+                        <a class="learning-nav-link" href="#letter-I">Letter I</a>
+                    </nav>
+                    
+                    <div class="learning-tips">
+                        <h5>Learning Tips</h5>
+                        <ul class="mt-3">
+                            <li>Practice regularly, even just for a few minutes each day</li>
+                            <li>Focus on hand positioning and finger placement</li>
+                            <li>Use a mirror to check your signs</li>
+                            <li>Practice with the webcam recognition tool</li>
+                            <li>Learn in context by forming simple words and phrases</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <a href="/practice" class="btn btn-primary">
+                            <i class="fas fa-video me-1"></i> Practice Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-9">
+                <h1 class="mb-4">ASL Alphabet: Letters A-I</h1>
+                <p class="lead mb-5">
+                    Learn the American Sign Language alphabet for letters A through I. Each card shows the proper hand position and provides tips for forming the sign correctly.
+                    Once you feel comfortable, head over to the Practice section to test your skills with our AI recognition tool.
+                </p>
+                
+                <div class="row g-4">
+                    <!-- Letter A -->
+                    <div class="col-md-6" id="letter-A">
+                        <div class="letter-card card h-100">
+                            <div class="letter-header">A</div>
+                            <img src="https://www.handspeak.com/word/a/asl-a.jpg" class="letter-image" alt="Letter A in ASL">
+                            <div class="letter-description">
+                                <h4>How to sign "A"</h4>
+                                <p>
+                                    Make a fist with your hand. Extend your thumb to the side of your fist.
+                                    Make sure your thumb is not crossed over your fingers.
+                                </p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <small>Tip: Keep your palm facing outward, away from your body.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Letter B -->
+                    <div class="col-md-6" id="letter-B">
+                        <div class="letter-card card h-100">
+                            <div class="letter-header">B</div>
+                            <img src="https://www.handspeak.com/word/b/asl-b.jpg" class="letter-image" alt="Letter B in ASL">
+                            <div class="letter-description">
+                                <h4>How to sign "B"</h4>
+                                <p>
+                                    Hold your hand flat with your fingers and thumb together.
+                                    Your palm should be facing outward, away from your body.
+                                </p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <small>Tip: Keep your fingers straight and pressed together.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Letter C -->
+                    <div class="col-md-6" id="letter-C">
+                        <div class="letter-card card h-100">
+                            <div class="letter-header">C</div>
+                            <img src="https://www.handspeak.com/word/c/asl-c.jpg" class="letter-image" alt="Letter C in ASL">
+                            <div class="letter-description">
+                                <h4>How to sign "C"</h4>
+                                <p>
+                                    Curve your fingers and thumb to form a "C" shape.
+                                    Your palm should be facing to the side.
+                                </p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <small>Tip: Keep your hand relaxed but maintain the curved shape.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Letter D -->
+                    <div class="col-md-6" id="letter-D">
+                        <div class="letter-card card h-100">
+                            <div class="letter-header">D</div>
+                            <img src="https://www.handspeak.com/word/d/asl-d.jpg" class="letter-image" alt="Letter D in ASL">
+                            <div class="letter-description">
+                                <h4>How to sign "D"</h4>
+                                <p>
+                                    Form a circle with your thumb and index finger, while keeping your other fingers straight up.
+                                    Your palm should be facing forward.
+                                </p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <small>Tip: The circle should be complete, with your thumb and index finger touching.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Letter E -->
+                    <div class="col-md-6" id="letter-E">
+                        <div class="letter-card card h-100">
+                            <div class="letter-header">E</div>
+                            <img src="https://www.handspeak.com/word/e/asl-e.jpg" class="letter-image" alt="Letter E in ASL">
+                            <div class="letter-description">
+                                <h4>How to sign "E"</h4>
+                                <p>
+                                    Curl your fingers inward so that your fingertips touch the palm of your hand.
+                                    Your thumb should be tucked against your palm.
+                                </p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <small>Tip: The fingertips should be visible, touching the palm near the base of the thumb.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Letter F -->
+                    <div class="col-md-6" id="letter-F">
+                        <div class="letter-card card h-100">
+                            <div class="letter-header">F</div>
+                            <img src="https://www.handspeak.com/word/f/asl-f.jpg" class="letter-image" alt="Letter F in ASL">
+                            <div class="letter-description">
+                                <h4>How to sign "F"</h4>
+                                <p>
+                                    Touch your thumb and index finger together to form a circle.
+                                    Your other three fingers should be extended upward.
+                                </p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <small>Tip: Keep your middle, ring, and pinky fingers close together and extended.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Letter G -->
+                    <div class="col-md-6" id="letter-G">
+                        <div class="letter-card card h-100">
+                            <div class="letter-header">G</div>
+                            <img src="https://www.handspeak.com/word/g/asl-g.jpg" class="letter-image" alt="Letter G in ASL">
+                            <div class="letter-description">
+                                <h4>How to sign "G"</h4>
+                                <p>
+                                    Point your index finger forward with your thumb extended to the side.
+                                    Your other fingers should be tucked into your palm.
+                                </p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <small>Tip: Your thumb and index finger should form an "L" shape when viewed from the side.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Letter H -->
+                    <div class="col-md-6" id="letter-H">
+                        <div class="letter-card card h-100">
+                            <div class="letter-header">H</div>
+                            <img src="https://www.handspeak.com/word/h/asl-h.jpg" class="letter-image" alt="Letter H in ASL">
+                            <div class="letter-description">
+                                <h4>How to sign "H"</h4>
+                                <p>
+                                    Extend your index and middle fingers out, keeping them together.
+                                    Your thumb should cross over your pinky and ring finger as they press against your palm.
+                                </p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <small>Tip: Keep your two extended fingers straight and parallel to each other.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Letter I -->
+                    <div class="col-md-6" id="letter-I">
+                        <div class="letter-card card h-100">
+                            <div class="letter-header">I</div>
+                            <img src="https://www.handspeak.com/word/i/asl-i.jpg" class="letter-image" alt="Letter I in ASL">
+                            <div class="letter-description">
+                                <h4>How to sign "I"</h4>
+                                <p>
+                                    Make a fist and extend only your pinky finger upward.
+                                    Your thumb can rest alongside your fingers or across them.
+                                </p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <small>Tip: Keep your pinky straight and pointing upward.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <a href="/practice" class="btn btn-lg btn-primary">
+                        <i class="fas fa-hands me-2"></i> Practice What You've Learned
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Sign Language Interpreter</h5>
+                    <p>A tool to help you learn and practice sign language using AI.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">© 2023 Sign Language Interpreter</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Highlight active section on scroll
+            window.addEventListener('scroll', function() {
+                const navLinks = document.querySelectorAll('.learning-nav-link');
+                let fromTop = window.scrollY + 100;
+                
+                navLinks.forEach(link => {
+                    const section = document.querySelector(link.getAttribute('href'));
+                    
+                    if (
+                        section.offsetTop <= fromTop &&
+                        section.offsetTop + section.offsetHeight > fromTop
+                    ) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Smooth scrolling for nav links
+            document.querySelectorAll('.learning-nav-link').forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    window.scrollTo({
+                        top: target.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Remove active class from all links
+                    document.querySelectorAll('.learning-nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked link
+                    link.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
